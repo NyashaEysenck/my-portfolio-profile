@@ -54,6 +54,7 @@ const Projects = () => {
   ];
 
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
@@ -74,11 +75,20 @@ const Projects = () => {
           {projects.map((project, index) => (
             <AnimatedSection
               key={project.id}
-              animation="fade-in"
+              animation="scale-in"
               delay={200 * (index + 1)}
               className="h-full"
             >
-              <Card className="glass-morphism border-white/10 overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+              <Card 
+                className={`glass-morphism border-white/10 overflow-hidden h-full flex flex-col interactive-card ${
+                  hoveredId === project.id ? 'border-primary/30' : 'border-white/10'
+                }`}
+                onMouseEnter={() => setHoveredId(project.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                <div className={`h-1.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 ${
+                  hoveredId === project.id ? 'w-full' : 'w-0'
+                }`}></div>
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <CardTitle className="text-gradient text-xl">{project.title}</CardTitle>
@@ -89,25 +99,47 @@ const Projects = () => {
                 </CardHeader>
                 <CardContent className="pb-4 flex-grow">
                   <div className="space-y-3">
-                    <div>
-                      <h4 className="text-sm font-medium text-primary">Problem:</h4>
-                      <CardDescription>{project.description.problem}</CardDescription>
+                    <div className="group cursor-pointer" onClick={() => toggleExpand(project.id)}>
+                      <h4 className="text-sm font-medium text-primary flex items-center">
+                        Problem:
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          width="16" 
+                          height="16" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                          className={`ml-1 transition-transform ${expandedId === project.id ? 'rotate-180' : ''}`}
+                        >
+                          <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                      </h4>
+                      <CardDescription className="group-hover:text-foreground/90 transition-colors">
+                        {project.description.problem}
+                      </CardDescription>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-primary">Solution:</h4>
-                      <CardDescription>{project.description.solution}</CardDescription>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-primary">Impact:</h4>
-                      <CardDescription>{project.description.impact}</CardDescription>
-                    </div>
+                    {expandedId === project.id && (
+                      <>
+                        <div className="space-y-1 animate-fade-in">
+                          <h4 className="text-sm font-medium text-primary">Solution:</h4>
+                          <CardDescription>{project.description.solution}</CardDescription>
+                        </div>
+                        <div className="space-y-1 animate-fade-in" style={{ animationDelay: '100ms' }}>
+                          <h4 className="text-sm font-medium text-primary">Impact:</h4>
+                          <CardDescription>{project.description.impact}</CardDescription>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </CardContent>
                 <CardFooter className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full transition-all duration-300 hover:bg-primary hover:text-white"
                     >
                       {tech}
                     </span>

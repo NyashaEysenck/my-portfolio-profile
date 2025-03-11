@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://NyashaEysenck.github.io/my-portfolio-profile",
+  "homepage": "https://NyashaEysenck.github.io/nyasha-gandah-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

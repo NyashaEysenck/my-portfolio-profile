@@ -59,7 +59,7 @@ const Education = () => {
                   </ul>
                 </div>
                 <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end">
-                  <span className="text-muted-foreground">Jan 2016 - Dec 2026</span>
+                  <span className="text-muted-foreground">Jan 2016 - Dec 2021</span>
                 </div>
               </div>
             </div>
@@ -84,6 +84,7 @@ const Education = () => {
                         <li>• Biology (B)</li>
                       </ul>
                     </div>
+           
                     <div>
                       <ul className="space-y-2">
                         <li>• Chemistry (A)</li>
@@ -93,6 +94,7 @@ const Education = () => {
                         <li>• Shona Language (B)</li>
                       </ul>
                     </div>
+                    
                   </div>
                 </div>
               </div>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -40,23 +39,28 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-2xl font-bold text-gradient">Portfolio</a>
+          <a href="#" className="text-2xl font-bold text-gradient">Nyasha Gandah</a>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
+          <nav className="hidden md:flex items-center space-x-6 ">
+            {menuItems.slice(0, -1).map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 px-3 py-2"
                 onClick={closeMenu}
               >
                 {item.name}
               </a>
             ))}
-            <Button className="bg-primary text-white hover:bg-primary/80">
-              <a href="/deployment-guide">Deployment Guide</a>
-            </Button>
+            {/* Unique rightmost link */}
+            <a
+              href={menuItems[menuItems.length - 1].href}
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-300"
+              onClick={closeMenu}
+            >
+              {menuItems[menuItems.length - 1].name}
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -80,9 +84,6 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <Button className="bg-primary text-white hover:bg-primary/80 w-full">
-              <a href="/deployment-guide" onClick={closeMenu}>Deployment Guide</a>
-            </Button>
           </nav>
         </div>
       )}

@@ -5,7 +5,7 @@ import AnimatedSection from "./AnimatedSection";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const roles = ["Software Developer", "UI Designer", "Problem Solver", "Tech Enthusiast"];
+  const roles = [ "Full Stack Developer", "Data Scientist", "ML/AI Engineer", "Problem Solver", "Tech Enthusiast"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -75,9 +75,9 @@ const Hero = () => {
             delay={300}
           >
             <div className="inline-block px-3 py-1 rounded-full glass-morphism text-sm text-primary mb-2 animate-pulse">
-              Computer Science Undergraduate
+              Software Developer
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold">
+            <h1 className="text-4xl md:text-5xl font-bold">
               <span className="block">Hi, I'm a</span>
               <span className="text-gradient block h-16 md:h-20">
                 {displayedText}
@@ -86,8 +86,7 @@ const Hero = () => {
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl">
               Computer Science student with a 3.8/4.0 GPA, skilled in software development, programming,
-              and building scalable applications. Seeking an internship or entry-level software development
-              role to contribute to innovative projects.
+              and building scalable applications. Looking forward to contributing to innovative projects.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Button className="bg-primary hover:bg-primary/80 text-white py-6 px-8 group relative overflow-hidden">

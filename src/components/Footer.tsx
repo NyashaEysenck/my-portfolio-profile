@@ -14,7 +14,7 @@ const Footer = () => {
           
           <div className="flex space-x-6 mb-4 md:mb-0">
             <a
-              href="https://github.com"
+              href="https://github.com/NyashaEysenck"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -25,7 +25,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/nyasha-gandah-8997b8311 "
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
